@@ -8,9 +8,9 @@ export default function Header() {
         <span className="headerTitleLg">Blog</span>
       </div>
       <img
-        className="headerImg" 
-        src="https://4kwallpapers.com/images/wallpapers/gta-6-teaser-3840x2160-13559.png" 
-        alt="" 
+        className="headerImg"
+        src="https://4kwallpapers.com/images/wallpapers/gta-6-teaser-3840x2160-13559.png"
+        alt=""
       />
     </div>
   )
