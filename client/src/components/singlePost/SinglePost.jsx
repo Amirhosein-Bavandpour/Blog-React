@@ -1,16 +1,32 @@
+import { useLocation } from "react-router-dom"
 import "./singlePost.css"
+import { useEffect, useState } from "react"
+import axios from "axios"
 
 export default function SinglePost() {
+  const location = useLocation()
+  const path = location.pathname.split("/")[2]
+  const [post, setPost] = useState({})
+
+  useEffect(()=>{
+    const getpost = async ()=>{
+      const res = await axios.get("/posts/" + path);
+      setPost(res.data)
+    }
+    getpost()
+  },[path])
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
+        {post.photo && (
         <img
-          src="https://4kwallpapers.com/images/wallpapers/couple-beach-romantic-together-star-trails-surreal-seascape-3840x2160-6681.jpg"
+          src={post.photo}
           alt=""
           className="singlePostImg"
         />
+        )}
         <h1 className="singlePostTitle">
-          Lorem ipsum dolor sit amet.
+          {post.title}
           <div className="singlePostEdit">
             <i className="singlePostIcon fa-regular fa-pen-to-square"></i>
             <i className="singlePostIcon fa-regular fa-trash-can"></i>
@@ -18,25 +34,12 @@ export default function SinglePost() {
         </h1>
         <div className="singlePostInfo">
           <span className="singlePostAuthor">
-            Author: <b>Amirhosein Bavandpour</b>
+            Author: <b>{post.username}</b>
           </span>
-          <span className="singlePostDate">1 hour ago</span>
+          <span className="singlePostDate">{new Date(post.createdAt).toDateString()}</span>
         </div>
         <p className="singlePostDesc">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, accusamus neque non enim minus facilis, corporis nobis sequi similique dolorum natus porro facere assumenda veritatis libero quod labore fugiat! Molestiae!
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, accusamus neque non enim minus facilis, corporis nobis sequi similique dolorum natus porro facere assumenda veritatis libero quod labore fugiat! Molestiae!
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, accusamus neque non enim minus facilis, corporis nobis sequi similique dolorum natus porro facere assumenda veritatis libero quod labore fugiat! Molestiae!
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, accusamus neque non enim minus facilis, corporis nobis sequi similique dolorum natus porro facere assumenda veritatis libero quod labore fugiat! Molestiae!
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, accusamus neque non enim minus facilis, corporis nobis sequi similique dolorum natus porro facere assumenda veritatis libero quod labore fugiat! Molestiae!
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, accusamus neque non enim minus facilis, corporis nobis sequi similique dolorum natus porro facere assumenda veritatis libero quod labore fugiat! Molestiae!
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, accusamus neque non enim minus facilis, corporis nobis sequi similique dolorum natus porro facere assumenda veritatis libero quod labore fugiat! Molestiae!
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, accusamus neque non enim minus facilis, corporis nobis sequi similique dolorum natus porro facere assumenda veritatis libero quod labore fugiat! Molestiae!
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, accusamus neque non enim minus facilis, corporis nobis sequi similique dolorum natus porro facere assumenda veritatis libero quod labore fugiat! Molestiae!
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, accusamus neque non enim minus facilis, corporis nobis sequi similique dolorum natus porro facere assumenda veritatis libero quod labore fugiat! Molestiae!
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, accusamus neque non enim minus facilis, corporis nobis sequi similique dolorum natus porro facere assumenda veritatis libero quod labore fugiat! Molestiae!
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, accusamus neque non enim minus facilis, corporis nobis sequi similique dolorum natus porro facere assumenda veritatis libero quod labore fugiat! Molestiae!
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, accusamus neque non enim minus facilis, corporis nobis sequi similique dolorum natus porro facere assumenda veritatis libero quod labore fugiat! Molestiae!
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, accusamus neque non enim minus facilis, corporis nobis sequi similique dolorum natus porro facere assumenda veritatis libero quod labore fugiat! Molestiae!
+        {post.desc}
         </p>
       </div>
     </div>

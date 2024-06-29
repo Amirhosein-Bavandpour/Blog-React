@@ -1,30 +1,28 @@
-import { Link } from 'react-router-dom'
 import './post.css'
+import {Link, link} from "react-router-dom"
 
-export default function Post() {
+export default function Post({ post }) {
   return (
     <div className="post">
-      <img className="postImg"
-        src="https://4kwallpapers.com/images/wallpapers/couple-beach-romantic-together-star-trails-surreal-seascape-3840x2160-6681.jpg"
-        alt=""
-      />
+      {post.photo && (
+        <img className="postImg"
+          src={post.photo}
+          alt=""
+        />
+      )}
       <div className="postInfo">
         <div className="postCats">
-          <span className="postCat">Music</span>
-          <span className="postCat">Life</span>
+          {post.categories.map((c) => (
+            <span className="postcat">{c.name}</span>
+          ))}
         </div>
-        <span className="postTitle">
-          <Link className='link' to="/post/:postId">Lorem ipsum, dolor sit amet</Link>
-        </span>
+        <Link to = {`/post/${post._id}`} className='link'>
+        <span className="postTitle">{post.title}</span>
+        </Link>
         <hr />
-        <span className="postDate">1 hour ago</span>
+        <span className="postDate">{new Date(post.createdAt).toDateString()}</span>
       </div>
-      <p className="postDesc">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi totam nam sequi. Id sunt, sequi corrupti est et consequatur omnis, quo ipsa iste, provident atque? Ratione nulla quod quia beatae!
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi totam nam sequi. Id sunt, sequi corrupti est et consequatur omnis, quo ipsa iste, provident atque? Ratione nulla quod quia beatae!
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi totam nam sequi. Id sunt, sequi corrupti est et consequatur omnis, quo ipsa iste, provident atque? Ratione nulla quod quia beatae!
-        Lorem ipsum dolor sit amet consectetur, sequi corrupti est et consequatur omnis, quo ipsa iste, provident atque? Ratione nulla quod quia beatae!
-      </p>
+      <p className="postDesc">{post.desc}</p>
     </div>
   )
 }
