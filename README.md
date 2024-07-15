@@ -27,42 +27,49 @@ Make sure you have the following installed on your machine:
 ### Setup Instructions
 
 1. **Clone the repository:**
+
    ```sh
    git clone https://github.com/yourusername/your-repo-name.git
    cd your-repo-name
 
-2. **Install dependencies:**
+3. **Install dependencies:**
 
 - For the backend:
-
-cd api
-npm install
+  
+  ```sh
+  cd api
+  npm install
 
 - For the frontend:
 
-cd client
-npm install
+  ```sh
+  cd client
+  npm install
 
 3. **Setup environment variables:**
+
 Create a `.env` file in the `api` directory and add the following:
 
-MONGO_URI=your_mongo_connection_string
-PORT=your_preferred_port
-JWT_SECRET=your_jwt_secret
+    ```sh
+    MONGO_URI=your_mongo_connection_string
+    PORT=your_preferred_port
 
 4. **Run the application:**
 
 - Start the api server:
-
-cd api
-npm start
+  
+  ```sh
+  cd api
+  npm start
 
 - Start the client server:
 
-cd clent
-npm start
+  ```sh
+  cd clent
+  npm start
 
 5. **Access the application:**
+   
 Open your browser and go to `http://localhost:3000`
 
 ### API Endpoints
@@ -70,15 +77,18 @@ Open your browser and go to `http://localhost:3000`
 Here are the main API endpoints.
 
 **Auth Routes**
+
 POST /api/auth/register - Register a new user
 POST /api/auth/login - Login a user
 
 **User Routes**
+
 PUT /api/users/ - Update a user
 DEL /api/users/ - Delete user and posts of that user
 GET /api/users/ - Get user
 
 **Post Routes**
+
 GET /api/posts - Get all blog posts
 GET /api/posts/:id - Get a single blog post by ID
 POST /api/posts/ - Create a new blog post
@@ -86,47 +96,50 @@ PUT /api/posts/:id - Update a blog post by ID
 DELETE /api/posts/:id - Delete a blog post by ID
 
 **Category Routes**
+
 GET /api/categories- Get all blog Categories
 POST /api/categories - Create a new Category
 
 **Upload Route**
+
 POST /api/upload - Upload Photo
 
 
 ### My Blog Project Folder Structure 
 
-blog/
-│
-├── api/
-│   ├── images/
-│   ├── models/
-│   ├── node_modules/
-│   ├── routes/
-│   ├── .env
-│   ├── index.js
-│   ├── package-lock.json
-│   ├── package.json
-│   └── yarn.lock
-│
-├── client/
-│   ├── node_modules/
-│   ├── pics/
-│   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── context/
-│   │   ├── pages/
-│   │   ├── App.js
-│   │   └── index.js
-│   ├── .gitignore
-│   ├── package-lock.json
-│   ├── package.json
-│   └── yarn.lock
-│
-└── README.md
+    ```sh
+    blog/
+    │
+    ├── api/
+    │   ├── images/
+    │   ├── models/
+    │   ├── node_modules/
+    │   ├── routes/
+    │   ├── .env
+    │   ├── index.js
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   └── yarn.lock
+    │
+    ├── client/
+    │   ├── node_modules/
+    │   ├── pics/
+    │   ├── public/
+    │   ├── src/
+    │   │   ├── components/
+    │   │   ├── context/
+    │   │   ├── pages/
+    │   │   ├── App.js
+    │   │   └── index.js
+    │   ├── .gitignore
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   └── yarn.lock
+    │
+    └── README.md
 
 #### Contact
 For any questions or feedback, please contact me at bavandpour.amirhosein@gmail.com.
 
 
-Make sure to replace placeholders like `yourusername`, `your-repo-name`, `your_mongo_connection_string`, `your_jwt_secret`, and `your-email@example.com` with your actual information.
+Make sure to replace placeholders like `yourusername`, `your-repo-name`, `your_mongo_connection_string`, and `your-email@example.com` with your actual information.
